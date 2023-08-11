@@ -1,4 +1,4 @@
-# 🏁 Projeto Final: KImóveis - TypeORM com Relacionamentos
+# KImóveis - TypeORM com Relacionamentos
 
 Para inciar este projeto, é necessário instalar as dependências, que serão utilizadas nos testes. Portanto utilize o comando abaixo para instalar tais dependências:
 
@@ -26,30 +26,30 @@ yarn init -y
 
 Para que os testes funcionem corretamente, existem algumas dependências.
 
-* O `app` tem que ser exportado como **default** em **src/app.ts**. Exemplo:
+- O `app` tem que ser exportado como **default** em **src/app.ts**. Exemplo:
 
 ```ts
-export default app
+export default app;
 ```
 
-* O `AppDataSource` tem que ser exportado em **src/data-source.ts**. Exemplo:
+- O `AppDataSource` tem que ser exportado em **src/data-source.ts**. Exemplo:
 
 ```ts
-export { AppDataSource }
+export { AppDataSource };
 
 // ou
 
 export const AppDataSource = new DataSource(dataSourceConfig());
 ```
 
-* As Entities **tem que ter os respectivos nomes** e **tem que ter a exportação centralizada** em **entities/index.ts**. Exemplo:
+- As Entities **tem que ter os respectivos nomes** e **tem que ter a exportação centralizada** em **entities/index.ts**. Exemplo:
 
 ```ts
-import { Address } from './<arquivo>';
-import { Category } from './<arquivo>';
-import { RealEstate } from './<arquivo>';
-import { Schedule } from './<arquivo>';
-import { User } from './<arquivo>';
+import { Address } from "./<arquivo>";
+import { Category } from "./<arquivo>";
+import { RealEstate } from "./<arquivo>";
+import { Schedule } from "./<arquivo>";
+import { User } from "./<arquivo>";
 
 export { Address, RealEstate, Category, User, Schedule };
 ```
@@ -98,7 +98,7 @@ yarn test --all
 
 ### Rodar os testes de uma pasta específica
 
-> detalhe: repare que tests está envolvido por 2 underlines. Isso se chama ***dunder***.
+> detalhe: repare que tests está envolvido por 2 underlines. Isso se chama **_dunder_**.
 
 ```bash
 # caso use npm
@@ -125,3 +125,68 @@ Após rodar um dos comandos aparecerá um log no seu terminal, contendo as infor
 **Observação:** O teste pode demorar alguns segundos para ser finalizado. Quanto maior for o teste, mais tempo será consumido para a execução.
 
 ### Agora que já sabe como iniciar o seu projeto e rodar os testes, é hora de colocar a mão no código
+
+# Documentação de Endpoints - Serviço de Gerenciamento de Imóveis
+
+Esta documentação descreve os endpoints disponíveis no Serviço de Gerenciamento de Imóveis, que permite a criação, listagem e agendamento de visitas a imóveis.
+
+## Endpoints do Serviço
+
+# API de Gerenciamento de Imóveis
+
+Esta é uma API de gerenciamento de imóveis que permite a criação, atualização, listagem e agendamento de visitas a imóveis, além de oferecer autenticação e categorização.
+
+## Endpoints
+
+### Usuários
+
+- **POST** `/users`
+
+  - Criação de usuário
+
+- **GET** `/users`
+
+  - Lista todos os usuários
+
+- **PATCH** `/users/:id`
+
+  - Atualiza um usuário
+
+- **DELETE** `/users/:id`
+  - Realiza um soft delete no usuário
+
+### Autenticação
+
+- **POST** `/login`
+  - Gera o token de autenticação
+
+### Categorias
+
+- **POST** `/categories`
+
+  - Criação de categoria
+
+- **GET** `/categories`
+
+  - Lista todas as categorias
+
+- **GET** `/categories/:id/realEstate`
+  - Lista todos imóveis que pertencem a uma categoria
+
+### Imóveis
+
+- **POST** `/realEstate`
+
+  - Criação de um imóvel
+
+- **GET** `/realEstate`
+  - Lista todos os imóveis
+
+### Agendamentos
+
+- **POST** `/schedules`
+
+  - Agenda uma visita a um imóvel
+
+- **GET** `/schedules/realEstate/:id`
+  - Lista todos os agendamentos de um imóvel
